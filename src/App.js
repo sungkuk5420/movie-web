@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Movie from './Movie';
+import NaviationItem from './NaviationItem';
+import DetailItem from './DetailItem';
 class App extends Component {
   state = {
     movies:[
@@ -25,11 +26,26 @@ class App extends Component {
     .then(movies => movies.data.movies)
     .catch(error => console.log(error));
   }
-  __renderMovive = () => {
+  _renderNavigationItem = () => {
     const movies = this.state.movies.map((movie)=>{
-      return <Movie
+      return <NaviationItem
         title={movie.title}
         poster={movie.medium_cover_image}
+        key={movie.id}
+        genres={movie.genres}
+        synopsis={movie.synopsis}
+      />
+     });
+
+     return movies;
+  };
+
+  _renderDetailItem = () => {
+    const movies = this.state.movies.map((movie)=>{
+      return <DetailItem
+        title={movie.title}
+        poster={movie.small_cover_image}
+        backgroundImage={movie.background_image_original}
         key={movie.id}
         genres={movie.genres}
         synopsis={movie.synopsis}
@@ -41,9 +57,15 @@ class App extends Component {
   render() {
     const { movies } = this.state;
     return (
-      <div className={movies ? "App" : "App--loading"}>
-        {movies ? this.__renderMovive() : "Loading"}
-      </div>
+      <>
+        <ul className="navigation">
+          {movies ? this._renderNavigationItem() : "Loading"}
+        </ul>
+
+        <div className="detail">
+          {movies ? this._renderDetailItem() : "Loading"}
+        </div>
+      </>
     );
   }
 }
