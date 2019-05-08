@@ -36,7 +36,6 @@ class App extends Component {
 
     // prepare letters
     // $('.headline').each(function() {
-    //   console.log($(this).hasClass('space-char'));
     //   const className = $(this).hasClass('space-char') ? 'letter space-char' : 'letter';
     //   $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class="+className+">$&</span>"));
     // });
@@ -79,7 +78,6 @@ class App extends Component {
         }
       });
 
-      console.log(rotation + type);
       timeline
         .to(navigation, 0.6, {
           rotation: -rotation + type,
