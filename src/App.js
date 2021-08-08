@@ -3,7 +3,7 @@ import './App.css';
 import NaviationItem from './NaviationItem';
 import DetailItem from './DetailItem';
 import $ from 'jquery';
-import { TweenMax, TimelineMax, Sine } from "gsap/TweenMax";
+import { TweenMax, TimelineMax, Sine } from "gsap/all";
 class App extends Component {
   state = {
     movies: [
